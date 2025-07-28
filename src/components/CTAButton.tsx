@@ -1,5 +1,5 @@
 import React from 'react';
-import CountdownTimer from './CountdownTimer';
+//import CountdownTimer from './CountdownTimer';
 
 interface CTAButtonProps {
   text: string;
@@ -12,8 +12,8 @@ interface CTAButtonProps {
 
 const CTAButton: React.FC<CTAButtonProps> = ({
   text,
-  showTimer = true,
-  timerMinutes = 30,
+  //showTimer = true,
+  //timerMinutes = 30,
   size = 'large',
   className = '',
   onClick
@@ -32,12 +32,12 @@ const CTAButton: React.FC<CTAButtonProps> = ({
 
   return (
     <div className={`text-center ${className}`}>
-      {showTimer && (
+      {/*{showTimer && (
         <div className="mb-4 md:mb-4">
           <p className="text-red-600 font-bold mb-2 text-sm md:text-base">¡Oferta por tiempo limitado!</p>
           <CountdownTimer initialMinutes={timerMinutes} />
         </div>
-      )}
+      )}*/}
       <button
         onClick={handleClick}
         className={`

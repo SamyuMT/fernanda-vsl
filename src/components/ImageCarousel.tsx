@@ -68,7 +68,7 @@ const ImageCarousel: React.FC = () => {
               <img
                 src={image.src}
                 alt={image.alt}
-                className="w-full h-48 md:h-96 object-cover"
+                className="w-full h-96 md:h-96 object-cover"
               />
               <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/70 to-transparent p-3 md:p-6">
                 <p className="text-white text-sm md:text-lg font-medium">{image.caption}</p>
