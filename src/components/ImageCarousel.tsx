@@ -11,28 +11,22 @@ interface CarouselImage {
 const images: CarouselImage[] = [
   {
     id: 1,
-    src: "https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
-    alt: "Fernanda enseñando",
-    caption: "Fernanda en acción: Enseñando con pasión y experiencia"
+    src: "/Instalaciones.png",
+    alt: "Instalaciones de UN-IR",
+    caption: "Un espacio adaptado para el aprendizaje y la inclusión"
   },
   {
     id: 2,
-    src: "https://images.pexels.com/photos/4145153/pexels-photo-4145153.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
-    alt: "Materiales del curso",
-    caption: "Materiales didácticos especializados y recursos exclusivos"
+    src: "/Talleres.png",
+    alt: "Capacitación profesional",
+    caption: "Capacitaciones y talleres para profesionales y familias"
   },
   {
     id: 3,
-    src: "https://images.pexels.com/photos/8613200/pexels-photo-8613200.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
-    alt: "Terapia inclusiva",
-    caption: "Enfoque inclusivo y personalizado para cada caso"
+    src: "/AcomVirtual.png",
+    alt: "Sesión virtual educativa",
+    caption: "Sesiones virtuales: aprendizaje y diversión en familia"
   },
-  {
-    id: 4,
-    src: "https://images.pexels.com/photos/8613074/pexels-photo-8613074.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
-    alt: "Comunidad de aprendizaje",
-    caption: "Únete a nuestra comunidad de profesionales y familias"
-  }
 ];
 
 const ImageCarousel: React.FC = () => {
@@ -57,8 +51,8 @@ const ImageCarousel: React.FC = () => {
   };
 
   return (
-    <div className="relative max-w-4xl mx-auto px-2 md:px-0">
-      <div className="relative overflow-hidden rounded-xl md:rounded-2xl shadow-xl mx-2 md:mx-0">
+    <div className="relative max-w-4xl mx-auto md:px-0">
+      <div className="relative overflow-hidden rounded-xl md:rounded-2xl shadow-xl mx-2 md:mx-0 border-4 border-[#1b92d1]">
         <div 
           className="flex transition-transform duration-500 ease-in-out"
           style={{ transform: `translateX(-${currentIndex * 100}%)` }}

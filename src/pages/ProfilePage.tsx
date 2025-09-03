@@ -1,6 +1,6 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, Award, BookOpen, Users, User, Target, Heart, Star, MessageCircle, Phone, Mail, MapPin } from 'lucide-react';
+import { ArrowLeft, Award, BookOpen, Users, User, Target, Heart, Star, MessageCircle, Mail, MapPin, Compass, Lightbulb, Layers, Handshake } from 'lucide-react';
 import ImageCarousel from '../components/ImageCarousel';
 import ContactForm from '../components/ContactForm';
 import Footer from '../components/Footer';
@@ -57,22 +57,19 @@ export default function ProfilePage() {
           <div className="relative inline-block mb-8">
             <div className="w-48 h-48 sm:w-64 sm:h-64 md:w-80 md:h-80 overflow-hidden shadow-2xl mx-auto border-4 border-white">
               <img
-                src="/profile.jpg"
+                src="/fotoProfile1.jpeg"
                 alt="Lic. Fernanda Suárez"
                 className="w-full h-full object-cover"
               />
             </div>
-            <div className="absolute -bottom-1 -right-1 sm:-bottom-2 sm:-right-2 w-8 h-8 sm:w-12 sm:h-12 bg-[#1b92d1] rounded-full flex items-center justify-center shadow-lg">
-              <Heart className="w-4 h-4 sm:w-6 sm:h-6 text-white fill-current" />
-            </div>
           </div>
           
           <h1 className="text-2xl sm:text-3xl md:text-5xl font-bold text-[#262c52] mb-3 md:mb-4">Lic. Fernanda Suárez</h1>
-          <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-4 md:mb-6 px-2">Especialista en Autismo y Trastornos del Neurodesarrollo</p>
+          <p className="text-base sm:text-lg md:text-xl text-gray-600 mb-4 md:mb-6 px-2">Especialista en Autismo y Trastornos del Neurosociodesarrollo</p>
           
           <div className="inline-flex items-center bg-white/80 backdrop-blur-sm rounded-full px-4 py-2 sm:px-6 sm:py-3 mb-6 md:mb-8 shadow-lg mx-2">
-            <Award className="w-4 h-4 sm:w-5 sm:h-5 text-[#1b92d1] mr-2" />
-            <span className="text-[#262c52] font-semibold text-sm sm:text-base">Licenciada en Psicopedagogía</span>
+            <Award className="w-7 h-7 sm:w-5 sm:h-5 text-[#1b92d1]" />
+            <span className="text-[#262c52] font-semibold text-sm sm:text-base">Profesora de niños y niñas sordos y transtornos del lenguaje</span>
           </div>
 
           {/* Quick Stats */}
@@ -101,17 +98,27 @@ export default function ProfilePage() {
             </h2>
             <div className="space-y-3 sm:space-y-4 text-gray-700 leading-relaxed text-sm sm:text-base">
               <p>
-                Soy Licenciada en Psicopedagogía y he dedicado mi carrera a la intervención en TEA y trastornos del neurodesarrollo. Cuento con certificaciones en ADOS y múltiples técnicas como ABA y Flortime.
+                Originaria de Olavarría, mi camino profesional comenzó en 1997 al trasladarme a Buenos Aires, ciudad donde realicé toda mi formación académica. Me gradué como Licenciada en Psicopedagogía en la Universidad del Museo Social (UMSA) y, buscando profundizar en las bases de la comunicación, me especialicé como Profesora para niños sordos e hipoacúsicos con enfoque oralista en la Universidad del Salvador (USAL).
               </p>
               <p>
-                Como creadora de UN-IR y de mi propio método registrado, mi pasión es ayudar a infancias y familias a alcanzar su máximo potencial a través de intervenciones especializadas y humanizadas.
-              </p>
-              <p>
-                Mi enfoque se basa en la experiencia práctica de más de dos décadas trabajando directamente con niños, familias y profesionales del área.
+                Esta sólida base en el desarrollo del lenguaje oral fue el pilar para dedicar mi carrera a la intervención en Trastornos del Espectro Autista (TEA) y del neurodesarrollo. Para ofrecer el mejor acompañamiento posible, he complementado mi formación con certificaciones de validez internacional como ADOS y el manejo de técnicas de vanguardia como ABA y Floortime. Toda esta trayectoria de estudio y experiencia clínica culminó en la creación de UN-IR, mi propio espacio, y en el desarrollo de un método de intervención propio. A través de él, mi pasión es guiar a las infancias y a sus familias para que alcancen su máximo potencial con estrategias especializadas, efectivas y, sobre todo, profundamente humanizadas.
               </p>
             </div>
           </div>
 
+        {/* My Approach Section */}
+        <div className="bg-white rounded-2xl p-4 sm:p-6 md:p-8 shadow-xl">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#262c52] mb-4 md:mb-6 flex items-center">
+            <Heart className="w-6 h-6 sm:w-8 sm:h-8 mr-2 sm:mr-3 text-[#1b92d1]" />
+            Mi Enfoque
+          </h2>
+          <div className="space-y-3 sm:space-y-4 text-gray-700 leading-relaxed text-sm sm:text-base">
+            <p>
+              Mi enfoque profesional se caracteriza por ser integral, personalizado y centrado en la familia. Combino técnicas neurocognitivas como ABA, TEACCH, PECS, SMILE y FLORTIME con una perspectiva holística que considera las particularidades económicas, culturales, sociales y religiosas de cada familia.
+            </p>
+          </div>
+        </div>
+        
           <div className="bg-white rounded-2xl p-4 sm:p-6 md:p-8 shadow-xl">
             <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#262c52] mb-4 md:mb-6 flex items-center">
               <Target className="w-6 h-6 sm:w-8 sm:h-8 mr-2 sm:mr-3 text-[#1b92d1]" />
@@ -124,7 +131,9 @@ export default function ProfilePage() {
                 </div>
                 <div>
                   <h3 className="font-bold text-[#262c52] mb-1 text-sm sm:text-base">Estudios Especializados</h3>
-                  <p className="text-gray-600 text-xs sm:text-sm">Licenciatura en Psicopedagogía con especialización en TEA</p>
+                  <p className="text-gray-600 text-xs sm:text-sm">— Licenciatura en Psicopedagogía - Universidad del Museo Social Argentino (UMSA)</p>
+                  <p className="text-gray-600 text-xs sm:text-sm">— Profesorado de niños/as Sordos e Hipoacúsicos - Universidad del Salvador (USAL)</p>
+                  <p className="text-gray-600 text-xs sm:text-sm">— Especialización en Estimulación Temprana - Instituto Ceiac</p>
                 </div>
               </div>
 
@@ -144,53 +153,101 @@ export default function ProfilePage() {
                 </div>
                 <div>
                   <h3 className="font-bold text-[#262c52] mb-1 text-sm sm:text-base">Logros</h3>
-                  <p className="text-gray-600 text-xs sm:text-sm">Creadora de UN-IR y método propio registrado</p>
+                  <p className="text-gray-600 text-xs sm:text-sm">Creadora de UN-IR y método Propio</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
 
+
         {/* Method Section */}
         <div id="methodology" className="bg-white rounded-2xl p-4 sm:p-6 md:p-12 mb-12 md:mb-20 shadow-xl mx-4">
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#262c52] mb-6 md:mb-8 text-center">Método Propio</h2>
-          
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#262c52] mb-4 md:mb-6 flex items-center">
+            <Award className="w-12 h-12 sm:w-8 sm:h-8 mr-2 sm:mr-3 text-[#1b92d1]" />
+            Método Fernanda Suárez: Un Enfoque Nacido de la Experiencia
+          </h2>
+
+          {/* Cuatro secciones cortas y dinámicas (móvil apiladas, escritorio en 2 columnas) */}
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-6 md:gap-8 mb-6 md:mb-8">
-            <div className="bg-gradient-to-br from-[#1b92d1]/10 to-[#1b92d1]/5 rounded-xl p-4 sm:p-6">
-              <h3 className="text-lg sm:text-xl font-bold text-[#262c52] mb-3 sm:mb-4">Metodología</h3>
+            {/* 1. Origen */}
+            <div className="bg-white rounded-xl p-4 sm:p-6 shadow-lg ring-2 ring-[#1b92d1]/30">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#1b92d1]/10 rounded-full flex items-center justify-center mb-3">
+                <Compass className="w-5 h-5 sm:w-6 sm:h-6 text-[#1b92d1]" />
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold text-[#262c52] mb-2 sm:mb-3">¿Por qué un método propio? El Origen</h3>
               <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
-                Después de años de experiencia, desarrollé un método único que combina las mejores prácticas de diferentes enfoques terapéuticos, adaptándolos a la realidad de cada familia y niño.
+                Este método nació como respuesta a una limitación observada durante años en los abordajes terapéuticos tradicionales: los niños podían aprender habilidades en sesión, pero muchas veces no lograban participar del mundo social real. Por eso, nuestro enfoque pone en el centro la dimensión social del desarrollo, entendiendo que jugar con otros, salir a la calle y participar en la familia y la escuela también es parte fundamental de crecer.
               </p>
             </div>
-            
-            <div className="bg-gradient-to-br from-yellow-400/10 to-yellow-400/5 rounded-xl p-4 sm:p-6">
-              <h3 className="text-lg sm:text-xl font-bold text-[#262c52] mb-3 sm:mb-4">Logros del Método</h3>
+
+            {/* 2. Partir de lo posible */}
+            <div className="bg-white rounded-xl p-4 sm:p-6 shadow-lg ring-2 ring-[#1b92d1]/30">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#1b92d1]/10 rounded-full flex items-center justify-center mb-3">
+                <Lightbulb className="w-5 h-5 sm:w-6 sm:h-6 text-[#1b92d1]" />
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold text-[#262c52] mb-2 sm:mb-3">¿Qué lo hace único? Partir de lo Posible</h3>
               <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
-                Mi método ha demostrado resultados efectivos en más de 2500 familias, proporcionando herramientas prácticas y estrategias claras para el desarrollo integral de niños con TEA.
+                Lo que distingue a este método es que parte siempre de lo posible, no de lo que “falta”. Es una invitación a construir desde lo que el niño ya puede hacer, desde sus intereses y su forma particular de vincularse. A través de propuestas lúdicas y vínculos sostenidos, se despliegan procesos clave como la simbolización, la comunicación y la autorregulación. Acompañar no es solo intervenir en sesión, sino construir con otros adultos una red que sostenga y potencie cada paso.
+              </p>
+            </div>
+
+            {/* 3. Las 5 etapas */}
+            <div className="bg-white rounded-xl p-4 sm:p-6 shadow-lg ring-2 ring-[#1b92d1]/30">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#1b92d1]/10 rounded-full flex items-center justify-center mb-3">
+                <Layers className="w-5 h-5 sm:w-6 sm:h-6 text-[#1b92d1]" />
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold text-[#262c52] mb-2 sm:mb-3">Las 5 Etapas de un Proceso que Respeta los Tiempos</h3>
+              <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
+                El recorrido terapéutico no se estructura por edad ni por diagnóstico, sino que se despliega en cinco etapas que avanzan según el nivel de acceso del niño al juego, al lenguaje y al vínculo. Este proceso, que incluye fases como la Etapa de acercamiento y construcción del lazo o la Etapa de interacción simbólica, asegura que cada niño transite el camino a su propio ritmo, sintiéndose siempre mirado, comprendido y acompañado.
+              </p>
+            </div>
+
+            {/* 4. Inspiración social */}
+            <div className="bg-white rounded-xl p-4 sm:p-6 shadow-lg ring-2 ring-[#1b92d1]/30">
+              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#1b92d1]/10 rounded-full flex items-center justify-center mb-3">
+                <Handshake className="w-5 h-5 sm:w-6 sm:h-6 text-[#1b92d1]" />
+              </div>
+              <h3 className="text-lg sm:text-xl font-bold text-[#262c52] mb-2 sm:mb-3">Nuestra Inspiración: El Aprendizaje Social</h3>
+              <p className="text-gray-700 leading-relaxed text-sm sm:text-base">
+                Este enfoque se apoya en los aportes de Lev Vygotsky y su teoría de la zona de desarrollo próximo, que sostiene que el aprendizaje ocurre primero en lo social y luego se internaliza. Por eso, el método no propone entrenamientos aislados, sino que diseña experiencias compartidas y significativas que despiertan en el niño el deseo genuino de participar, comunicar y transformar el mundo junto a otros.
               </p>
             </div>
           </div>
 
-          <div className="text-center">
-            <div className="inline-block bg-gradient-to-r from-[#1b92d1] to-[#262c52] p-4 sm:p-6 md:p-8 rounded-2xl shadow-lg max-w-full">
-              <img
-                src="/image.png"
-                alt="Logo del Método"
-                className="max-w-[200px] sm:max-w-xs mx-auto rounded-lg"
-              />
+          {/* Logros del Método: siempre debajo, ocupa todo el ancho */}
+          <div className="bg-white rounded-xl p-4 sm:p-6 shadow-lg ring-2 ring-[#1b92d1]/30">
+            <h3 className="text-lg sm:text-xl font-bold text-[#262c52] mb-3 sm:mb-4">Logros del Método</h3>
+            <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4 sm:gap-6 md:gap-8">
+              <div className="bg-[#FFFFFF] backdrop-blur-sm border-l-4 border-[#a3d8f4] rounded-xl p-4 sm:p-6 shadow-lg">
+                <h4 className="text-lg sm:text-xl font-bold text-[#262c52] mb-3">Comunicación</h4>
+                <p className="text-gray-700 text-sm sm:text-base">Expresar necesidades, deseos y emociones con palabras, gestos o acciones.</p>
+              </div>
+              <div className="bg-[#FFFFFF] backdrop-blur-sm border-l-4 border-[#a3d8f4] rounded-xl p-4 sm:p-6 shadow-lg">
+                <h4 className="text-lg sm:text-xl font-bold text-[#262c52] mb-3">Participación social</h4>
+                <p className="text-gray-700 text-sm sm:text-base">Involucrarse en situaciones reales de convivencia y juego compartido.</p>
+              </div>
+              <div className="bg-[#FFFFFF] backdrop-blur-sm border-l-4 border-[#a3d8f4] rounded-xl p-4 sm:p-6 shadow-lg">
+                <h4 className="text-lg sm:text-xl font-bold text-[#262c52] mb-3">Herramientas para convivir</h4>
+                <p className="text-gray-700 text-sm sm:text-base">Pedir ayuda, compartir, esperar turnos, tolerar frustraciones.</p>
+              </div>
+              <div className="bg-[#FFFFFF] backdrop-blur-sm border-l-4 border-[#a3d8f4] rounded-xl p-4 sm:p-6 shadow-lg">
+                <h4 className="text-lg sm:text-xl font-bold text-[#262c52] mb-3">Lenguaje</h4>
+                <p className="text-gray-700 text-sm sm:text-base">Usar el lenguaje para interactuar, anticipar, imaginar y crear.</p>
+              </div>
             </div>
           </div>
         </div>
 
         {/* Photo Carousel Section */}
-        <div className="mb-12 md:mb-20 px-4">
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#262c52] mb-6 md:mb-8 text-center">Galería de Resultados</h2>
+        <div className="mb-12 md:mb-20 px-2">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#262c52] mb-6 md:mb-8 pl-4">Galería de Resultados</h2>
           <ImageCarousel />
         </div>
 
         {/* Reviews Section */}
         <div className="mb-12 md:mb-20 px-4">
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#262c52] mb-6 md:mb-8 text-center">Reseñas</h2>
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#262c52] mb-6 md:mb-8 pl-4">Reseñas</h2>
           
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6">
             {[
@@ -239,57 +296,44 @@ export default function ProfilePage() {
           </div>
         </div>
 
-        {/* Success Indicators */}
-        <div className="bg-gradient-to-r from-[#1b92d1] to-[#262c52] rounded-2xl p-6 sm:p-8 md:p-12 text-white text-center mb-12 md:mb-16 mx-4">
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold mb-6 md:mb-8">Indicadores de Éxito</h2>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 sm:p-6">
-              <div className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2">+600</div>
-              <div className="text-sm sm:text-base md:text-lg opacity-90">Profesionales Capacitados</div>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 sm:p-6">
-              <div className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2">28</div>
-              <div className="text-sm sm:text-base md:text-lg opacity-90">Años de Dedicación</div>
-            </div>
-            <div className="bg-white/10 backdrop-blur-sm rounded-xl p-4 sm:p-6">
-              <div className="text-2xl sm:text-3xl md:text-4xl font-bold mb-2">+2500</div>
-              <div className="text-sm sm:text-base md:text-lg opacity-90">Familias Transformadas</div>
-            </div>
-          </div>
-        </div>
 
         {/* Contact Information */}
         <div id="contact" className="bg-white rounded-2xl p-4 sm:p-6 md:p-8 shadow-xl mb-12 md:mb-16 mx-4">
-          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#262c52] mb-6 md:mb-8 text-center">Información de Contacto</h2>
-          
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 sm:gap-6 text-center">
-            <div className="flex flex-col items-center p-3 sm:p-4">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#1b92d1]/10 rounded-full flex items-center justify-center mb-3">
-                <Phone className="w-5 h-5 sm:w-6 sm:h-6 text-[#1b92d1]" />
-              </div>
-              <h3 className="font-bold text-[#262c52] mb-2 text-sm sm:text-base">Teléfono</h3>
-              <p className="text-gray-600 text-sm sm:text-base">+1 (555) 123-4567</p>
-            </div>
-            
-            <div className="flex flex-col items-center p-3 sm:p-4">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#1b92d1]/10 rounded-full flex items-center justify-center mb-3">
-                <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-[#1b92d1]" />
-              </div>
-              <h3 className="font-bold text-[#262c52] mb-2 text-sm sm:text-base">Correo electrónico</h3>
-              <p className="text-gray-600 text-sm sm:text-base">fernanda@un-ir.com</p>
-            </div>
-            
-            <div className="flex flex-col items-center p-3 sm:p-4">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-[#1b92d1]/10 rounded-full flex items-center justify-center mb-3">
+          <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#262c52] mb-4 text-center">Información de Contacto</h2>
+          <div className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-8 text-center">
+            {/* Ubicación */}
+            <div className="flex flex-col items-center sm:items-start sm:flex-row gap-2 sm:gap-4">
+              <a
+                href="https://www.google.com/maps/place/UN-IR+autismos/@-34.6463434,-58.6417195,17z/data=!4m15!1m8!3m7!1s0x95bcb8ac6d9f9721:0xf62a508489e4ecb4!2sJLL,+Carlos+Casares+1328,+B1712+Castelar,+Provincia+de+Buenos+Aires,+Argentina!3b1!8m2!3d-34.6463434!4d-58.6417195!16s%2Fg%2F11nnk__hq6!3m5!1s0x95bcb9c77ffa17dd:0x33f2b3bc53dc77ed!8m2!3d-34.6463434!4d-58.6417195!16s%2Fg%2F11h1mknr7z?entry=ttu&g_ep=EgoyMDI1MDgwNi4wIKXMDSoASAFQAw%3D%3D"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-10 h-10 sm:w-12 sm:h-12 bg-[#1b92d1]/10 rounded-full flex items-center justify-center mb-1 hover:bg-[#1b92d1]/20 transition-colors"
+                title="Ver en Google Maps"
+              >
                 <MapPin className="w-5 h-5 sm:w-6 sm:h-6 text-[#1b92d1]" />
+              </a>
+              <div className="flex flex-col items-center sm:items-start">
+                <h3 className="font-bold text-[#262c52] mb-1 text-sm sm:text-base">Ubicación</h3>
+                <p className="text-gray-600 text-sm sm:text-base whitespace-normal max-w-xs">Carlos casares 1328, Castelar, Buenos Aires</p>
               </div>
-              <h3 className="font-bold text-[#262c52] mb-2 text-sm sm:text-base">Ubicación</h3>
-              <p className="text-gray-600 text-sm sm:text-base">Buenos Aires, Argentina</p>
+            </div>
+            {/* Correo electrónico */}
+            <div className="flex flex-col items-center sm:items-start sm:flex-row gap-2 sm:gap-4">
+              <a
+                href="mailto:licfernandasuarez@gmail.com"
+                className="w-10 h-10 sm:w-12 sm:h-12 bg-[#1b92d1]/10 rounded-full flex items-center justify-center mb-1 hover:bg-[#1b92d1]/20 transition-colors"
+                title="Enviar correo"
+              >
+                <Mail className="w-5 h-5 sm:w-6 sm:h-6 text-[#1b92d1]" />
+              </a>
+              <div className="flex flex-col items-center sm:items-start">
+                <h3 className="font-bold text-[#262c52] mb-1 text-sm sm:text-base">Correo electrónico</h3>
+                <p className="text-gray-600 text-sm sm:text-base whitespace-normal max-w-xs">licfernandasuarez@gmail.com</p>
+              </div>
             </div>
           </div>
-          
           {/* Contact Form Button */}
-          <div className="text-center mt-6 md:mt-8">
+          <div className="text-center mt-4">
             <button
               onClick={() => setIsContactFormOpen(true)}
               className="bg-gradient-to-r from-[#1b92d1] to-[#262c52] text-white font-bold py-3 px-6 md:py-4 md:px-8 rounded-full text-base md:text-lg transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl flex items-center mx-auto space-x-2"
@@ -302,13 +346,14 @@ export default function ProfilePage() {
 
         {/* CTA Section */}
         <div className="text-center px-4 mb-8">
-          <Link
-            to="/workshops"
-            className="inline-flex items-center bg-gradient-to-r from-yellow-400 to-yellow-500 hover:from-yellow-500 hover:to-yellow-600 text-gray-900 font-bold py-3 px-6 sm:py-4 sm:px-8 rounded-full text-base sm:text-lg transform hover:scale-105 transition-all duration-300 shadow-lg hover:shadow-xl"
+          <button
+            disabled
+            className="inline-flex items-center bg-gradient-to-r from-yellow-400 to-yellow-500 text-gray-400 font-bold py-3 px-6 sm:py-4 sm:px-8 rounded-full text-base sm:text-lg shadow-lg cursor-not-allowed opacity-70 relative"
           >
             <Users className="w-5 h-5 sm:w-6 sm:h-6 mr-2" />
             Conoce Nuestros Talleres
-          </Link>
+            <span className="absolute -top-4 right-0 bg-[#1b92d1] text-white text-xs font-semibold px-3 py-1 rounded-full shadow-md">Muy pronto</span>
+          </button>
         </div>
       </div>
 

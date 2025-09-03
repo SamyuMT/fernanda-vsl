@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { User, Globe, ShoppingBag, Heart } from 'lucide-react';
 
 export default function HomePage() {
-  const logos = ['/metodo-fernanda.jpg', '/un-ir.jpg'];
+  const logos = ['/fotoProfile1.jpeg', '/fotoProfile2.jpeg', '/fotoProfile3.jpeg', '/fotoProfile4.jpeg'];
   const randomLogo = logos[Math.floor(Math.random() * logos.length)];
 
   return (
@@ -19,7 +19,7 @@ export default function HomePage() {
                 className="w-full h-full object-cover rounded-full"
               />
             </div>
-            <div className="absolute bottom-3 -right-0 w-8 h-8 bg-[#1b92d1] rounded-full flex items-center justify-center">
+            <div className="absolute bottom-4 -right-0 w-8 h-8 bg-[#1b92d1] rounded-full flex items-center justify-center">
               <Heart className="w-4 h-4 text-white fill-current" />
             </div>
           </div>
@@ -33,41 +33,47 @@ export default function HomePage() {
 
         {/* Navigation Buttons */}
         <div className="space-y-4">
-          <Link
+            <Link
             to="/profile"
-            className="w-full bg-white/80 backdrop-blur-sm rounded-2xl p-4 flex items-center space-x-4 hover:bg-white/90 transition-all duration-300 shadow-lg hover:shadow-xl group"
-          >
-            <div className="w-12 h-12 bg-[#1b92d1]/10 rounded-xl flex items-center justify-center group-hover:bg-[#1b92d1]/20 transition-colors">
-              <User className="w-6 h-6 text-[#1b92d1]" />
-            </div>
+            className="w-full bg-white/60 backdrop-blur-sm rounded-2xl p-4 pl-8 flex items-center space-x-4 hover:bg-white/90 transition-all duration-300 shadow-lg hover:shadow-xl group"
+            style={{ border: '2px solid rgba(27, 146, 209, 0.5)' }} // Opacidad en el borde
+            >
             <div className="flex-1">
-              <h3 className="font-semibold text-[#262c52] text-lg">Conocer más</h3>
+              <h3 className="font-semibold text-[#262c52] text-lg">Conocer más de mí</h3>
               <p className="text-gray-600 text-sm">Descubre mi trayectoria y método</p>
             </div>
-          </Link>
+            </Link>
 
-          <Link
-            to="/workshops"
-            className="w-full bg-white/80 backdrop-blur-sm rounded-2xl p-4 flex items-center space-x-4 hover:bg-white/90 transition-all duration-300 shadow-lg hover:shadow-xl group"
-          >
-            <div className="w-12 h-12 bg-yellow-400/20 rounded-xl flex items-center justify-center group-hover:bg-yellow-400/30 transition-colors">
-              <ShoppingBag className="w-6 h-6 text-yellow-600" />
-            </div>
-            <div className="flex-1">
-              <h3 className="font-semibold text-[#262c52] text-lg">Tienda web</h3>
+            <button
+            disabled
+            className="w-full bg-white/40 backdrop-blur-sm rounded-2xl p-4 pl-8 flex items-center space-x-4 shadow-lg cursor-not-allowed opacity-60"
+            style={{ border: '2px solid rgba(27, 146, 209, 0.3)' }}
+            >
+            <div className="flex-1 text-left">
+              <h3 className="font-semibold text-[#262c52] text-lg">
+                Tienda web <span className="text-xs text-[#1b92d1] ml-2">Muy pronto</span>
+              </h3>
               <p className="text-gray-600 text-sm">Talleres y cursos especializados</p>
             </div>
-          </Link>
+            </button>
+
+            <Link
+            to="https://docs.google.com/forms/d/1FaW3HtUGheXQHcTwcmrolrD2YMA8MNnU2p4598OQ-BE/viewform?edit_requested=true"
+            className="w-full bg-white/60 backdrop-blur-sm rounded-2xl p-4 pl-8 flex items-center space-x-4 hover:bg-white/90 transition-all duration-300 shadow-lg hover:shadow-xl group"
+            style={{ border: '2px solid rgba(27, 146, 209, 0.5)' }} // Opacidad en el borde
+            >
+            <div className="flex-1">
+              <h3 className="font-semibold text-[#262c52] text-lg">Consultas y evaluaciones UN-IR</h3>
+              <p className="text-gray-600 text-sm">Llena formulario para evaluar a tu niño</p>
+            </div>
+            </Link>
 
           <a
             href="https://instagram.com/licfernandasuarez"
             target="_blank"
             rel="noopener noreferrer"
-            className="w-full bg-gradient-to-r from-purple-500/10 to-pink-500/10 backdrop-blur-sm rounded-2xl p-4 flex items-center space-x-4 hover:from-purple-500/20 hover:to-pink-500/20 transition-all duration-300 shadow-lg hover:shadow-xl group"
-          >
-            <div className="w-12 h-12 bg-gradient-to-r from-purple-500 to-pink-500 rounded-xl flex items-center justify-center">
-              <Globe className="w-6 h-6 text-white" />
-            </div>
+            className="w-full bg-white/60 backdrop-blur-sm rounded-2xl p-4 pl-8 flex items-center space-x-4 hover:bg-white/90 transition-all duration-300 shadow-lg hover:shadow-xl group"
+            style={{ border: '2px solid rgba(27, 146, 209, 0.5)' }} >
             <div className="flex-1">
               <h3 className="font-semibold text-[#262c52] text-lg">@licfernandasuarez</h3>
               <p className="text-gray-600 text-sm">Síguenos en Instagram</p>
@@ -76,7 +82,8 @@ export default function HomePage() {
         </div>
 
         {/* Stats */}
-        <div className="mt-8 bg-white/60 backdrop-blur-sm rounded-2xl p-6">
+        <div className="mt-8 bg-white/60 backdrop-blur-sm rounded-2xl p-6"
+        style={{ border: '2px solid rgba(27, 146, 209, 0.5)' }}>
           <div className="grid grid-cols-3 gap-4 text-center">
             <div>
               <div className="text-2xl font-bold text-[#262c52]">26+</div>

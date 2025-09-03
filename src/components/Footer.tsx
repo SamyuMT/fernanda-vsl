@@ -27,18 +27,46 @@ const Footer: React.FC = () => {
           <div>
             <h4 className="font-bold mb-3 md:mb-4 text-sm md:text-base">Fernanda</h4>
             <ul className="space-y-1 md:space-y-2 text-gray-300 text-xs md:text-sm">
-              <li><Link to="/profile#about-me" className="hover:text-white transition-colors">Sobre Fernanda</Link></li>
-              <li><Link to="/profile#methodology" className="hover:text-white transition-colors">Metodología</Link></li>
+              <li>
+                <Link
+                  to="/profile#about-me"
+                  className="hover:text-white transition-colors"
+                  onClick={e => {
+                    if (window.location.pathname === "/profile") {
+                      e.preventDefault();
+                      const el = document.getElementById("about-me");
+                      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+                    }
+                  }}
+                >
+                  Sobre mí
+                </Link>
+              </li>
+              <li>
+                <Link
+                  to="/profile#methodology"
+                  className="hover:text-white transition-colors"
+                  onClick={e => {
+                    if (window.location.pathname === "/profile") {
+                      e.preventDefault();
+                      const el = document.getElementById("methodology");
+                      if (el) el.scrollIntoView({ behavior: "smooth", block: "start" });
+                    }
+                  }}
+                >
+                  Metodología
+                </Link>
+              </li>
             </ul>
           </div>
 
-          <div>
+          {/*<div>
             <h4 className="font-bold mb-3 md:mb-4 text-sm md:text-base">Talleres</h4>
             <ul className="space-y-1 md:space-y-2 text-gray-300 text-xs md:text-sm">
               <li><Link to="/workshops" className="hover:text-white transition-colors">Todos los Talleres</Link></li>
               <li><Link to="/workshop/taller-teorico-practico" className="hover:text-white transition-colors">Taller Teórico-Práctico</Link></li>
             </ul>
-          </div>
+          </div>*/}
 
           <div>
             <h4 className="font-bold mb-3 md:mb-4 text-sm md:text-base">Soporte</h4>

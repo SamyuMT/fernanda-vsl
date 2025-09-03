@@ -11,12 +11,13 @@ const ContactForm: React.FC<ContactFormProps> = ({ isOpen, onClose }) => {
     name: '',
     email: '',
     phone: '',
+    clientType: '',
     message: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle');
 
-  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
@@ -34,7 +35,7 @@ const ContactForm: React.FC<ContactFormProps> = ({ isOpen, onClose }) => {
       setSubmitStatus('success');
       setTimeout(() => {
         onClose();
-        setFormData({ name: '', email: '', phone: '', message: '' });
+        setFormData({ name: '', email: '', phone: '', clientType: '', message: '' });
         setSubmitStatus('idle');
       }, 2000);
     } catch (error) {
@@ -119,6 +120,25 @@ const ContactForm: React.FC<ContactFormProps> = ({ isOpen, onClose }) => {
                 placeholder="+1 (555) 123-4567"
               />
             </div>
+          </div>
+
+          {/* Client Type Field */}
+          <div>
+            <label htmlFor="clientType" className="block text-sm font-medium text-gray-700 mb-2">
+              Tipo de cliente *
+            </label>
+            <select
+              id="clientType"
+              name="clientType"
+              value={formData.clientType}
+              onChange={handleInputChange}
+              required
+              className="w-full pl-4 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[#1b92d1] focus:border-transparent transition-all bg-white"
+            >
+              <option value="" disabled>Selecciona una opción</option>
+              <option value="profesional">Profesional</option>
+              <option value="padre">Padres de familia</option>
+            </select>
           </div>
 
           {/* Message Field */}
