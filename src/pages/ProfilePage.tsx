@@ -98,10 +98,10 @@ export default function ProfilePage() {
             </h2>
             <div className="space-y-3 sm:space-y-4 text-gray-700 leading-relaxed text-sm sm:text-base">
               <p>
-                Originaria de Olavarría, mi camino profesional comenzó en 1997 al trasladarme a Buenos Aires, ciudad donde realicé toda mi formación académica. Me gradué como Licenciada en Psicopedagogía en la Universidad del Museo Social (UMSA) y, buscando profundizar en las bases de la comunicación, me especialicé como Profesora para niños sordos e hipoacúsicos con enfoque oralista en la Universidad del Salvador (USAL).
+                Originaria de Olavarría, mi formación profesional se forjó en Buenos Aires, graduándome como Licenciada en Psicopedagogía (UMSA), profesora de sordos e hipoacúsicos con especialidad en lenguaje oral (USAL) y estimulación temprana. Esta base en la comunicación fue el pilar para mi vocación.
               </p>
               <p>
-                Esta sólida base en el desarrollo del lenguaje oral fue el pilar para dedicar mi carrera a la intervención en Trastornos del Espectro Autista (TEA) y del neurodesarrollo. Para ofrecer el mejor acompañamiento posible, he complementado mi formación con certificaciones de validez internacional como ADOS y el manejo de técnicas de vanguardia como ABA y Floortime. Toda esta trayectoria de estudio y experiencia clínica culminó en la creación de UN-IR, mi propio espacio, y en el desarrollo de un método de intervención propio. A través de él, mi pasión es guiar a las infancias y a sus familias para que alcancen su máximo potencial con estrategias especializadas, efectivas y, sobre todo, profundamente humanizadas.
+                Con el tiempo, mi carrera evolucionó hacia la intervención en TEA y trastornos del neurodesarrollo, especializándome con certificaciones como ADOS-2, ABA y Floortime. Esta trayectoria me permitió fundar UN-IR y crear un método propio para guiar a las infancias y sus familias con un enfoque tan efectivo como humano.
               </p>
             </div>
           </div>
@@ -114,7 +114,7 @@ export default function ProfilePage() {
           </h2>
           <div className="space-y-3 sm:space-y-4 text-gray-700 leading-relaxed text-sm sm:text-base">
             <p>
-              Mi enfoque profesional se caracteriza por ser integral, personalizado y centrado en la familia. Combino técnicas neurocognitivas como ABA, TEACCH, PECS, SMILE y FLORTIME con una perspectiva holística que considera las particularidades económicas, culturales, sociales y religiosas de cada familia.
+              Mi enfoque se basa en la firme creencia de que no existen tratamientos ideales, sino soluciones únicas y personalizadas para cada niño y su familia. Mi principal objetivo es optimizar sus capacidades a través de una perspectiva holística que me permita una comprensión profunda de sus necesidades. Para ello, aplico mis conocimientos en diversas técnicas neurocognitivas, como ABA, TEACCH, PECS y Floortime, en un entorno terapéutico individualizado. Reconozco que la familia y la escuela desempeñan un papel fundamental, por lo que trabajo en estrecha colaboración con ambos. Esta alianza nos permite brindar recomendaciones terapéuticas, familiares y escolares significativas, con la meta final de ayudar a las infancias a alcanzar su máximo potencial y mejorar su calidad de vida.
             </p>
           </div>
         </div>
