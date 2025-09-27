@@ -1,0 +1,170 @@
+{
+  "workshops": [
+    {
+      "id": 1,
+      "slug": "taller-teorico-practico",
+      "title": "Taller Teórico-Práctico Basado en la Experiencia",
+      "subtitle": "De la Teoría a la Práctica: Aprende a Programar Sesiones Efectivas para Niños con Autismo",
+      "description": "Descubre el CÓMO abordar una terapia con objetivos y programas claros para ver resultados reales.",
+      "duration": "4 horas",
+      "modality": "Online vía Meet",
+      "price": 197,
+      "originalPrice": 297,
+      "image": "https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
+      "features": [
+        "Armado General de una Sesión",
+        "Planificación y Programas",
+        "Planillas y Registro de Datos",
+        "Fundamentos del Aprendizaje"
+      ],
+      "targetAudience": ["Profesionales y Terapeutas", "Familias y Cuidadores"],
+      "detailPage": {
+        "videoUrl": "https://my-image-storage-flask.s3.us-east-2.amazonaws.com/videos/heygen_video_068c1417.mp4",
+        "ctaButtonText": "SÍ, QUIERO INSCRIBIRME AL TALLER",
+        "contentSection": {
+          "title": "Contenido del Taller: Tu Hoja de Ruta Práctica",
+          "description": "Módulos diseñados para llevarte de la teoría a la práctica efectiva",
+          "features": [
+            {
+              "title": "Armado General de una Sesión",
+              "description": "Aprende qué materiales usar, cuál es la disposición del espacio y los elementos que no pueden faltar."
+            },
+            {
+              "title": "Planificación y Programas",
+              "description": "Descubre cómo se arma una planificación de trabajo y cómo diseñar cada programa con sus objetivos por áreas."
+            },
+            {
+              "title": "Planillas y Registro de Datos",
+              "description": "Aprenderás a armar planillas y registrar el progreso de cada programa. ¡La toma de datos es esencial!"
+            },
+            {
+              "title": "Fundamentos del Aprendizaje",
+              "description": "Entiende cómo es el aprendizaje de un niño con autismo y qué funciones cognitivas básicas debes estimular al inicio."
+            }
+          ]
+        },
+        "targetSection": {
+          "title": "¿A quién va dirigido este taller?",
+          "description": "Diseñado especialmente para quienes buscan resultados reales y prácticos",
+          "subtitle": "Profesionales y Terapeutas",
+          "subdescription": "Capacita a profesionales para la implementación de programas específicos. Ideal si buscas la confianza y habilidades para enfrentar este gratificante trabajo."
+        },
+        "ctaButtonSecondaryText": "ADQUIRIR AHORA EL TALLER"
+      }
+    },
+    {
+      "id": 2,
+      "slug": "intervencion-temprana",
+      "title": "Intervención Temprana en TEA",
+      "subtitle": "Estrategias Efectivas para Niños de 0-5 años con Trastorno del Espectro Autista",
+      "description": "Aprende técnicas especializadas de intervención temprana que marcan la diferencia en el desarrollo de niños pequeños con TEA.",
+      "duration": "6 horas",
+      "modality": "Online vía Meet",
+      "price": 247,
+      "originalPrice": 347,
+      "image": "https://ix-marketing.imgix.net/benefits_unleashed-creativity.png?auto=format,compress&w=1946",
+      "features": [
+        "Detección Temprana de Signos",
+        "Estrategias de Comunicación",
+        "Desarrollo de Habilidades Sociales",
+        "Apoyo Familiar Integral",
+        "Planes de Intervención Personalizados"
+      ],
+      "targetAudience": ["Terapeutas Ocupacionales", "Psicólogos", "Familias con niños pequeños", "Educadores especiales"],
+      "detailPage": {
+        "videoUrl": "https://my-image-storage-flask.s3.us-east-2.amazonaws.com/videos/3-Testeo-de-productos.mkv",
+        "ctaButtonText": "ÚNETE AL PROGRAMA DE INTERVENCIÓN TEMPRANA",
+        "contentSection": {
+          "title": "Programa Integral: Intervención Temprana Especializada",
+          "description": "Metodología probada para maximizar el desarrollo en los primeros años de vida",
+          "features": [
+            {
+              "title": "Detección Temprana de Signos",
+              "description": "Aprende a identificar las primeras señales de TEA en bebés y niños pequeños, con herramientas de evaluación especializadas."
+            },
+            {
+              "title": "Estrategias de Comunicación",
+              "description": "Descubre técnicas para estimular el desarrollo del lenguaje y la comunicación no verbal en etapas tempranas."
+            },
+            {
+              "title": "Desarrollo de Habilidades Sociales",
+              "description": "Implementa programas específicos para fomentar la interacción social y el juego funcional desde los primeros años."
+            },
+            {
+              "title": "Apoyo Familiar Integral",
+              "description": "Capacita a las familias con herramientas prácticas para continuar la intervención en el hogar de manera efectiva."
+            },
+            {
+              "title": "Planes de Intervención Personalizados",
+              "description": "Diseña programas individualizados adaptados a las necesidades específicas de cada niño y su contexto familiar."
+            }
+          ]
+        },
+        "targetSection": {
+          "title": "¿Para quién está diseñado este programa?",
+          "description": "Especializado para profesionales que trabajan con primera infancia y familias",
+          "subtitle": "Especialistas en Primera Infancia",
+          "subdescription": "Ideal para terapeutas ocupacionales, psicólogos infantiles, educadores especiales y familias que buscan implementar estrategias de intervención temprana efectivas y basadas en evidencia científica."
+        },
+        "ctaButtonSecondaryText": "COMENZAR MI FORMACIÓN EN INTERVENCIÓN TEMPRANA"
+      }
+    },
+    {
+    "id": 3,
+    "slug": "manejo-conductas-problematicas",
+    "title": "Taller de Manejo de Conductas Problemáticas en TEA",
+    "subtitle": "Estrategias Efectivas para Reducir y Prevenir Conductas Desafiantes en el Espectro Autista",
+    "description": "Aprende técnicas basadas en evidencia para identificar, analizar e intervenir conductas problemáticas, mejorando la calidad de vida del niño y su familia.",
+    "duration": "8 horas",
+    "modality": "Online vía Meet",
+    "price": 297,
+    "originalPrice": 397,
+    "image": "https://images.pexels.com/photos/8613265/pexels-photo-8613265.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
+    "features": [
+        "Análisis Funcional de Conductas",
+        "Estrategias de Prevención",
+        "Técnicas de Intervención Directa",
+        "Planes de Modificación Conductual",
+        "Herramientas para Familias"
+    ],
+    "targetAudience": ["Psicólogos", "Terapeutas Conductuales", "Educadores Especiales", "Familias con niños TEA"],
+    "detailPage": {
+        "videoUrl": "https://my-image-storage-flask.s3.us-east-2.amazonaws.com/videos/heygen_video_20250919_024341_23b26436.mp4",
+        "ctaButtonText": "INSCRIBIRME AL TALLER DE CONDUCTAS",
+        "contentSection": {
+        "title": "Contenido Especializado: De la Crisis a la Calma",
+        "description": "Metodología integral para transformar conductas desafiantes en oportunidades de aprendizaje",
+        "features": [
+            {
+            "title": "Análisis Funcional de Conductas",
+            "description": "Aprende a identificar los antecedentes, comportamientos y consecuencias que mantienen las conductas problemáticas para diseñar intervenciones efectivas."
+            },
+            {
+            "title": "Estrategias de Prevención",
+            "description": "Descubre cómo modificar el ambiente y las rutinas para prevenir la aparición de conductas desafiantes antes de que ocurran."
+            },
+            {
+            "title": "Técnicas de Intervención Directa",
+            "description": "Domina estrategias específicas para el manejo inmediato de crisis conductuales, priorizando la seguridad y el bienestar."
+            },
+            {
+            "title": "Planes de Modificación Conductual",
+            "description": "Diseña programas estructurados de cambio conductual con objetivos medibles y estrategias de reforzamiento positivo."
+            },
+            {
+            "title": "Herramientas para Familias",
+            "description": "Capacita a los padres con técnicas prácticas para implementar en el hogar y mantener la consistencia en diferentes entornos."
+            }
+        ]
+        },
+        "targetSection": {
+        "title": "¿Para quién está diseñado este taller intensivo?",
+        "description": "Especializado para profesionales y familias que enfrentan desafíos conductuales complejos",
+        "subtitle": "Profesionales en Intervención Conductual",
+        "subdescription": "Dirigido a psicólogos, terapeutas ABA, educadores especiales y familias que buscan herramientas científicamente validadas para abordar conductas autolesivas, agresividad, rabietas intensas y otros comportamientos desafiantes en el TEA."
+        },
+        "ctaButtonSecondaryText": "DOMINAR EL MANEJO DE CONDUCTAS AHORA"
+    }
+    }
+  ]
+}

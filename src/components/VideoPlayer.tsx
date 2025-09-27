@@ -1,11 +1,12 @@
-import React, { useState, useRef, useEffect } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { Play, Pause, Volume2, RotateCcw, Maximize } from 'lucide-react';
 
 interface VideoPlayerProps {
   className?: string;
+  videoSrc?: string;
 }
 
-export default function VideoPlayer({ className = "" }: VideoPlayerProps) {
+export default function VideoPlayer({ className = "", videoSrc = "https://www.youtube.com/watch?v=zo7i8VTpfNM" }: VideoPlayerProps) {
   const [isPlaying, setIsPlaying] = useState(true); // Start with playing state since video is auto-played
   const [isMuted, setIsMuted] = useState(true);
   const [currentTime, setCurrentTime] = useState(0);
@@ -96,7 +97,7 @@ export default function VideoPlayer({ className = "" }: VideoPlayerProps) {
         <video
           ref={videoRef}
           className="w-full h-auto cursor-pointer"
-          src="https://my-image-storage-flask.s3.us-east-2.amazonaws.com/videos/3-Testeo-de-productos.mkv"
+          src={videoSrc}
           autoPlay
           muted={isMuted}
           onClick={handleVideoClick}

@@ -1,28 +1,67 @@
-import React, { useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import { useParams, Link } from 'react-router-dom';
-import { ArrowLeft, Heart, Users, BookOpen, Award, CheckCircle, Star, GraduationCap, ArrowRight } from 'lucide-react';
+import { ArrowLeft, Users, BookOpen, CheckCircle, Star, GraduationCap, ArrowRight } from 'lucide-react';
+import { Workshop, fetchWorkshopBySlug } from '../services/workshopService';
 import CTAButton from '../components/CTAButton';
 import VideoPlayer from '../components/VideoPlayer';
 import Footer from '../components/Footer';
 
 export default function WorkshopDetailPage() {
-  const { slug } = useParams();
+  const { slug } = useParams<{ slug: string }>();
+  const [workshop, setWorkshop] = useState<Workshop | null>(null);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     // Smooth scroll behavior
     document.documentElement.style.scrollBehavior = 'smooth';
-  }, []);
+    
+    // Load workshop data
+    const loadWorkshop = async () => {
+      if (!slug) {
+        setError('Slug no proporcionado');
+        setLoading(false);
+        return;
+      }
+      
+      try {
+        setLoading(true);
+        const workshopData = await fetchWorkshopBySlug(slug);
+        if (workshopData) {
+          setWorkshop(workshopData);
+        } else {
+          setError('Taller no encontrado');
+        }
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Error al cargar el taller');
+      } finally {
+        setLoading(false);
+      }
+    };
+    
+    loadWorkshop();
+  }, [slug]);
 
   const scrollToCourse = () => {
     document.getElementById('course-section')?.scrollIntoView({ behavior: 'smooth' });
   };
 
-  // If the slug doesn't match our workshop, show 404 or redirect
-  if (slug !== 'taller-teorico-practico') {
+  if (loading) {
     return (
       <div className="min-h-screen bg-[#f2e9e2] flex items-center justify-center">
         <div className="text-center">
-          <h1 className="text-4xl font-bold text-[#262c52] mb-4">Taller no encontrado</h1>
+          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-[#1b92d1] mx-auto mb-4"></div>
+          <p className="text-[#262c52] text-lg">Cargando taller...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error || !workshop) {
+    return (
+      <div className="min-h-screen bg-[#f2e9e2] flex items-center justify-center">
+        <div className="text-center">
+          <h1 className="text-4xl font-bold text-[#262c52] mb-4">{error || 'Taller no encontrado'}</h1>
           <Link to="/workshops" className="text-[#1b92d1] hover:underline">
             Volver a talleres
           </Link>
@@ -41,7 +80,7 @@ export default function WorkshopDetailPage() {
             Volver
           </Link>
           <p className="text-sm md:text-base font-bold uppercase tracking-wide">
-            TALLER TEÓRICO-PRÁCTICO
+            {workshop.title}
           </p>
         </div>
       </div>
@@ -60,26 +99,25 @@ export default function WorkshopDetailPage() {
           {/* Título Principal */}
           <div className="mb-6 md:mb-8">
             <h1 className="text-2xl md:text-4xl lg:text-6xl font-bold text-[#262c52] mb-4 leading-tight px-2">
-              {/*<span className="block text-3xl md:text-5xl lg:text-7xl">De la Teoría a la Práctica:</span>*/}
               <span className="block text-[#1b92d1] text-3xl md:text-5xl lg:text-7xl font-extrabold">
-                Aprende a Programar Sesiones Efectivas
+                {workshop.title}
               </span>
-              <span className="block text-xl md:text-3xl lg:text-4xl">para Niños con Autismo</span>
+              <span className="block text-xl md:text-3xl lg:text-4xl">{workshop.subtitle}</span>
             </h1>
           </div>
 
           {/* Video Player - Mobile First */}
           <div className="mb-6 md:mb-12">
-            <VideoPlayer />
+            <VideoPlayer videoSrc={workshop.detailPage?.videoUrl} />
             <p className="text-base md:text-xl text-[#262c52] mt-4 max-w-4xl mx-auto leading-relaxed px-4 font-medium">
-              Descubre el CÓMO abordar una terapia con objetivos y programas claros para ver resultados reales.
+              {workshop.description}
             </p>
           </div>
 
           {/* CTA Section */}
           <div className="mb-8 md:mb-12">
             <CTAButton 
-              text="SÍ, QUIERO INSCRIBIRME AL TALLER"
+              text={workshop.detailPage?.ctaButtonText || "INSCRIBIRME AL TALLER"}
               timerMinutes={30}
               size="medium"
               className="mb-4"
@@ -110,42 +148,27 @@ export default function WorkshopDetailPage() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-8 md:mb-16">
             <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-[#262c52] mb-4 md:mb-6">
-              Contenido del Taller: Tu Hoja de Ruta Práctica
+              {workshop.detailPage?.contentSection.title || "Contenido del Taller"}
             </h2>
             <p className="text-base md:text-xl text-gray-600 max-w-3xl mx-auto px-4">
-              Módulos diseñados para llevarte de la teoría a la práctica efectiva
+              {workshop.detailPage?.contentSection.description || "Módulos diseñados para la práctica efectiva"}
             </p>
           </div>
 
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-8 mb-8 md:mb-16 px-2 md:px-0">
-            {[
-              {
-                icon: <BookOpen className="w-6 h-6 md:w-8 md:h-8" />,
-                title: "Armado General de una Sesión",
-                description: "Aprende qué materiales usar, cuál es la disposición del espacio y los elementos que no pueden faltar."
-              },
-              {
-                icon: <Users className="w-6 h-6 md:w-8 md:h-8" />,
-                title: "Planificación y Programas",
-                description: "Descubre cómo se arma una planificación de trabajo y cómo diseñar cada programa con sus objetivos por áreas."
-              },
-              {
-                icon: <CheckCircle className="w-6 h-6 md:w-8 md:h-8" />,
-                title: "Planillas y Registro de Datos",
-                description: "Aprenderás a armar planillas y registrar el progreso de cada programa. ¡La toma de datos es esencial!"
-              },
-              {
-                icon: <Star className="w-6 h-6 md:w-8 md:h-8" />,
-                title: "Fundamentos del Aprendizaje",
-                description: "Entiende cómo es el aprendizaje de un niño con autismo y qué funciones cognitivas básicas debes estimular al inicio."
-              }
-            ].map((item, index) => (
-              <div key={index} className="bg-white rounded-xl md:rounded-2xl p-4 md:p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100">
-                <div className="text-[#1b92d1] mb-2 md:mb-4">{item.icon}</div>
-                <h3 className="text-base md:text-xl font-bold text-[#262c52] mb-2 md:mb-3">{item.title}</h3>
-                <p className="text-sm md:text-base text-gray-600">{item.description}</p>
-              </div>
-            ))}
+            {workshop.detailPage?.contentSection.features.map((item, index) => {
+              const icons = [BookOpen, Users, CheckCircle, Star, GraduationCap];
+              const IconComponent = icons[index % icons.length];
+              return (
+                <div key={index} className="bg-white rounded-xl md:rounded-2xl p-4 md:p-8 shadow-lg hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+                  <div className="text-[#1b92d1] mb-2 md:mb-4">
+                    <IconComponent className="w-6 h-6 md:w-8 md:h-8" />
+                  </div>
+                  <h3 className="text-base md:text-xl font-bold text-[#262c52] mb-2 md:mb-3">{item.title}</h3>
+                  <p className="text-sm md:text-base text-gray-600">{item.description}</p>
+                </div>
+              );
+            }) || []}
           </div>
 
           <div className="mt-8 md:mt-12 text-center">
@@ -160,62 +183,9 @@ export default function WorkshopDetailPage() {
         </div>
       </section>
 
-      {/* ¿Para quién es? Section */}
-      <section id="course-section" className="py-12 md:py-20 px-4 bg-[#f2e9e2]"
-          style={{
-          backgroundImage: 'url(/bg-3.png)',
-          backgroundSize: 'cover',
-          backgroundPosition: 'center',
-          opacity: 1
-        }}>
-        <div className="max-w-6xl mx-auto">
-          <div className="text-center mb-8 md:mb-16">
-            <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-[#262c52] mb-4 md:mb-6">
-              ¿A quién va dirigido este taller?
-            </h2>
-            <p className="text-base md:text-xl text-gray-600 max-w-3xl mx-auto px-4">
-              Diseñado especialmente para quienes buscan resultados reales y prácticos
-            </p>
-          </div>
 
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-8 md:mb-16">
-            <div className="bg-gradient-to-br from-[#1b92d1]/10 to-[#1b92d1]/5 rounded-xl md:rounded-2xl p-4 md:p-8">
-              <div className="flex items-center mb-4 md:mb-6">
-                <div className="bg-[#1b92d1] rounded-full p-2 md:p-3 mr-3 md:mr-4">
-                  <GraduationCap className="w-5 h-5 md:w-8 md:h-8 text-white" />
-                </div>
-                <h4 className="text-lg md:text-2xl font-bold text-[#262c52]">Profesionales y Terapeutas</h4>
-              </div>
-              <p className="text-sm md:text-base text-gray-700 leading-relaxed">
-                Capacita a profesionales para la implementación de programas específicos. Ideal si buscas la confianza y habilidades para enfrentar este gratificante trabajo.
-              </p>
-            </div>
-
-            {/*<div className="bg-gradient-to-br from-yellow-400/10 to-yellow-400/5 rounded-xl md:rounded-2xl p-4 md:p-8">
-              <div className="flex items-center mb-4 md:mb-6">
-                <div className="bg-yellow-500 rounded-full p-2 md:p-3 mr-3 md:mr-4">
-                  <Home className="w-5 h-5 md:w-8 md:h-8 text-white" />
-                </div>
-                <h4 className="text-lg md:text-2xl font-bold text-[#262c52]">Familias y Cuidadores</h4>
-              </div>
-              <p className="text-sm md:text-base text-gray-700 leading-relaxed">
-                Las familias deben ser parte fundamental. Aprende a dar pautas y estrategias claras para abordar y ayudar a tus hijos en casa.
-              </p>
-            </div>*/}
-          </div>
-
-          <div className="mt-8 md:mt-12">
-            <CTAButton 
-              text="AQUIRIR AHORA EL TALLER"
-              timerMinutes={25}
-              size="large"
-            />
-          </div>
-        </div>
-
-      </section>
       {/* Conoce a tu Guía */}
-      <section className="py-12 md:py-20 px-4 bg-white">
+      {/*<section className="py-12 md:py-20 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-8 md:mb-12">
             <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-[#262c52] mb-4 md:mb-6">
@@ -261,12 +231,12 @@ export default function WorkshopDetailPage() {
             </div>
           </div>
         </div>
-      </section>
+      </section> */}
 
-      {/* Prueba Social - Testimonios */}
-      <section className="py-12 md:py-20 px-4 bg-[#f2e9e2]"
+      {/* ¿Para quién es? Section */}
+      <section id="course-section" className="py-12 md:py-20 px-4 bg-[#f2e9e2]"
           style={{
-          backgroundImage: 'url(/bg-1.png)',
+          backgroundImage: 'url(/bg-3.png)',
           backgroundSize: 'cover',
           backgroundPosition: 'center',
           opacity: 1
@@ -274,88 +244,47 @@ export default function WorkshopDetailPage() {
         <div className="max-w-6xl mx-auto">
           <div className="text-center mb-8 md:mb-16">
             <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold text-[#262c52] mb-4 md:mb-6">
-              Construyamos Juntos un Camino Práctico hacia el Aprendizaje
+              {workshop.detailPage?.targetSection.title || "¿A quién va dirigido?"}
             </h2>
             <p className="text-base md:text-xl text-gray-600 max-w-3xl mx-auto px-4">
-              Testimonios reales de transformación de la teoría a la práctica
+              {workshop.detailPage?.targetSection.description || "Diseñado para profesionales especializados"}
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-6 md:gap-8 mb-8 md:mb-12">
-            {[
-              {
-                name: "Dra. María González",
-                role: "Psicóloga Clínica",
-                content: "El taller me dio las herramientas prácticas que necesitaba. Ahora puedo estructurar sesiones efectivas con confianza total.",
-                avatar: "https://images.pexels.com/photos/415829/pexels-photo-415829.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop"
-              },
-              {
-                name: "Carlos Mendoza",
-                role: "Padre de familia",
-                content: "Aprendí a aplicar en casa lo que mi hijo necesita. Las estrategias son claras y realmente funcionan.",
-                avatar: "https://images.pexels.com/photos/1222271/pexels-photo-1222271.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop"
-              },
-              {
-                name: "Lic. Ana Rodríguez",
-                role: "Terapeuta Ocupacional",
-                content: "Fernanda logró que entendiera cómo programar objetivos específicos. Mis pacientes han mostrado avances increíbles.",
-                avatar: "https://images.pexels.com/photos/1239291/pexels-photo-1239291.jpeg?auto=compress&cs=tinysrgb&w=150&h=150&fit=crop"
-              }
-            ].map((testimonial, index) => (
-              <div key={index} className="bg-white rounded-xl p-6 shadow-lg">
-                <div className="flex items-center mb-4">
-                  <img
-                    src={testimonial.avatar}
-                    alt={testimonial.name}
-                    className="w-12 h-12 rounded-full object-cover mr-4"
-                  />
-                  <div>
-                    <h4 className="font-bold text-[#262c52] text-sm">{testimonial.name}</h4>
-                    <p className="text-[#1b92d1] text-xs">{testimonial.role}</p>
-                  </div>
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 md:gap-8 mb-8 md:mb-16">
+            <div className="bg-gradient-to-br from-[#1b92d1]/10 to-[#1b92d1]/5 rounded-xl md:rounded-2xl p-4 md:p-8">
+              <div className="flex items-center mb-4 md:mb-6">
+                <div className="bg-[#1b92d1] rounded-full p-2 md:p-3 mr-3 md:mr-4">
+                  <GraduationCap className="w-5 h-5 md:w-8 md:h-8 text-white" />
                 </div>
-                <p className="text-gray-700 text-sm italic">"{testimonial.content}"</p>
+                <h4 className="text-lg md:text-2xl font-bold text-[#262c52]">
+                  {workshop.detailPage?.targetSection.subtitle || "Profesionales"}
+                </h4>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Final CTA */}
-      <section className="py-12 md:py-20 px-4 bg-gradient-to-br from-[#1b92d1] to-[#262c52]">
-        <div className="max-w-4xl mx-auto text-center text-white">
-          <h2 className="text-2xl md:text-4xl lg:text-5xl font-bold mb-4 md:mb-6">
-            ¿Listo para transformar tu práctica?
-          </h2>
-          <p className="text-base md:text-xl mb-6 md:mb-8 opacity-90 px-4">
-            Únete al taller que está cambiando la forma de abordar la terapia en TEA
-          </p>
-          
-          <div className="bg-white/10 backdrop-blur-sm rounded-xl md:rounded-2xl p-4 md:p-8 mb-6 md:mb-8 mx-2 md:mx-0">
-            <h3 className="text-lg md:text-2xl font-bold mb-3 md:mb-4">🎁 OFERTA ESPECIAL HOY</h3>
-            <div className="flex items-center justify-center space-x-2 md:space-x-4 mb-3 md:mb-4">
-              <span className="text-xl md:text-3xl line-through opacity-60">$297</span>
-              <span className="text-3xl md:text-5xl font-bold text-yellow-400">$197</span>
+              <p className="text-sm md:text-base text-gray-700 leading-relaxed">
+                {workshop.detailPage?.targetSection.subdescription || "Ideal para profesionales especializados"}
+              </p>
             </div>
-            <p className="text-sm md:text-lg opacity-90">Ahorra $100 USD • Solo por tiempo limitado</p>
           </div>
 
-          <CTAButton 
-            text="QUIERO TRANSFORMAR MI PRÁCTICA. INSCRIBIRME AHORA"
-            timerMinutes={20}
-            size="large"
-            className="mb-6 md:mb-8"
-          />
+          <div className="mt-8 md:mt-12">
+            <CTAButton 
+              text={workshop.detailPage?.ctaButtonSecondaryText || "ADQUIRIR AHORA"}
+              timerMinutes={25}
+              size="large"
+            />
+          </div>
           <p className="text-center text-sm md:text-base opacity-90 mb-4">
-            Únete a una red de terapeutas capacitados. Modalidad online vía Meet.
+            Únete a una red de terapeutas capacitados. Modalidad {workshop.modality}.
           </p>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 text-xs md:text-sm opacity-80 px-4">
+          <div className=" text-center grid grid-cols-1 md:grid-cols-3 gap-4 md:gap-6 text-xs md:text-sm opacity-80 px-4">
             <div>✅ Acceso inmediato</div>
-            <div>✅ Certificado incluido</div>
             <div>✅ Soporte personalizado</div>
+            <div>✅ Precio: ${workshop.price} (antes ${workshop.originalPrice})</div>
           </div>
         </div>
+
       </section>
 
       {/* Footer */}

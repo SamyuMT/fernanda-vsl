@@ -1,32 +1,58 @@
-import React from 'react';
+import { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { ArrowLeft, BookOpen, Users, Clock, Award, Star } from 'lucide-react';
+import { ArrowLeft, BookOpen, Users, Clock, Award } from 'lucide-react';
 import Footer from '../components/Footer';
+import { Workshop, fetchWorkshops } from '../services/workshopService';
 
 export default function WorkshopsPage() {
-  const workshops = [
-    {
-      id: 1,
-      slug: 'taller-teorico-practico',
-      title: 'Taller Teórico-Práctico Basado en la Experiencia',
-      subtitle: 'De la Teoría a la Práctica: Aprende a Programar Sesiones Efectivas para Niños con Autismo',
-      description: 'Descubre el CÓMO abordar una terapia con objetivos y programas claros para ver resultados reales.',
-      duration: '4 horas',
-      modality: 'Online vía Meet',
-      price: 197,
-      originalPrice: 297,
-      image: 'https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop',
-      features: [
-        'Armado General de una Sesión',
-        'Planificación y Programas',
-        'Planillas y Registro de Datos',
-        'Fundamentos del Aprendizaje'
-      ],
-      targetAudience: ['Profesionales y Terapeutas', 'Familias y Cuidadores'],
-      rating: 5,
-      reviews: 127
-    }
-  ];
+  const [workshops, setWorkshops] = useState<Workshop[]>([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
+
+  useEffect(() => {
+    const loadWorkshops = async () => {
+      try {
+        setLoading(true);
+        const workshopsData = await fetchWorkshops();
+        setWorkshops(workshopsData);
+      } catch (err) {
+        setError(err instanceof Error ? err.message : 'Error al cargar los talleres');
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    loadWorkshops();
+  }, []);
+
+  if (loading) {
+    return (
+      <div className="min-h-screen bg-[#f2e9e2] flex items-center justify-center">
+        <div className="text-center">
+          <div className="animate-spin rounded-full h-32 w-32 border-b-2 border-[#1b92d1] mx-auto mb-4"></div>
+          <p className="text-[#262c52] text-lg">Cargando talleres...</p>
+        </div>
+      </div>
+    );
+  }
+
+  if (error) {
+    return (
+      <div className="min-h-screen bg-[#f2e9e2] flex items-center justify-center">
+        <div className="text-center">
+          <div className="bg-red-100 border border-red-400 text-red-700 px-4 py-3 rounded mb-4">
+            {error}
+          </div>
+          <button 
+            onClick={() => window.location.reload()} 
+            className="bg-[#1b92d1] text-white px-4 py-2 rounded hover:bg-[#1580b8]"
+          >
+            Reintentar
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div className="min-h-screen bg-[#f2e9e2]">
@@ -65,17 +91,6 @@ export default function WorkshopsPage() {
                     className="w-full h-64 lg:h-full object-cover"
                   />
                   <div className="absolute top-4 left-4">
-                    <span className="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">
-                      ¡Oferta Limitada!
-                    </span>
-                  </div>
-                  <div className="absolute bottom-4 right-4 bg-white/90 backdrop-blur-sm rounded-lg p-3">
-                    <div className="flex items-center space-x-1">
-                      {[...Array(workshop.rating)].map((_, i) => (
-                        <Star key={i} className="w-4 h-4 text-yellow-400 fill-current" />
-                      ))}
-                      <span className="text-sm font-semibold ml-2">({workshop.reviews})</span>
-                    </div>
                   </div>
                 </div>
 
@@ -142,7 +157,6 @@ export default function WorkshopsPage() {
                         Ahorra ${workshop.originalPrice - workshop.price}
                       </span>
                     </div>
-                    <p className="text-sm text-gray-600">Precio especial por tiempo limitado</p>
                   </div>
 
                   {/* CTA Button */}
