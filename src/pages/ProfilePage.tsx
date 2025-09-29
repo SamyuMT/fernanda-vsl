@@ -245,7 +245,7 @@ export default function ProfilePage() {
           <ImageCarousel />
         </div>
 
-        {/* Reviews Section */}
+        {/* Reviews Section
         <div className="mb-12 md:mb-20 px-4">
           <h2 className="text-xl sm:text-2xl md:text-3xl font-bold text-[#262c52] mb-6 md:mb-8 pl-4">Reseñas</h2>
           
@@ -294,7 +294,7 @@ export default function ProfilePage() {
               </div>
             ))}
           </div>
-        </div>
+        </div> */}
 
 
         {/* Contact Information */}

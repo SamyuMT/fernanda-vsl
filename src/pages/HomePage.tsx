@@ -44,6 +44,17 @@ export default function HomePage() {
             </div>
             </Link>
 
+            <Link
+            to="/enrollment"
+            className="w-full bg-white/60 backdrop-blur-sm rounded-2xl p-4 pl-8 flex items-center space-x-4 hover:bg-white/90 transition-all duration-300 shadow-lg hover:shadow-xl group"
+            style={{ border: '2px solid rgba(27, 146, 209, 0.5)' }}
+            >
+            <div className="flex-1">
+              <h3 className="font-semibold text-[#262c52] text-lg">Habilitación de Taller</h3>
+              <p className="text-gray-600 text-sm">Habilita tu acceso al taller con la referencia de pago</p>
+            </div>
+            </Link>
+
             <button
             disabled
             className="w-full bg-white/40 backdrop-blur-sm rounded-2xl p-4 pl-8 flex items-center space-x-4 shadow-lg cursor-not-allowed opacity-60"

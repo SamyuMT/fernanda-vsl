@@ -10,6 +10,7 @@
       "modality": "Online vía Meet",
       "price": 197,
       "originalPrice": 297,
+      "linkpay": "https://mpago.li/187ku6T",
       "image": "https://images.pexels.com/photos/8613089/pexels-photo-8613089.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
       "features": [
         "Armado General de una Sesión",
@@ -62,6 +63,7 @@
       "modality": "Online vía Meet",
       "price": 247,
       "originalPrice": 347,
+      "linkpay": "https://mpago.li/187ku6T",
       "image": "https://ix-marketing.imgix.net/benefits_unleashed-creativity.png?auto=format,compress&w=1946",
       "features": [
         "Detección Temprana de Signos",
@@ -119,6 +121,7 @@
     "modality": "Online vía Meet",
     "price": 297,
     "originalPrice": 397,
+    "linkpay": "https://mpago.li/187ku6T",
     "image": "https://images.pexels.com/photos/8613265/pexels-photo-8613265.jpeg?auto=compress&cs=tinysrgb&w=800&h=600&fit=crop",
     "features": [
         "Análisis Funcional de Conductas",

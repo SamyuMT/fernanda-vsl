@@ -8,6 +8,7 @@ interface CTAButtonProps {
   size?: 'small' | 'medium' | 'large';
   className?: string;
   onClick?: () => void;
+  paymentLink?: string;
 }
 
 const CTAButton: React.FC<CTAButtonProps> = ({
@@ -16,7 +17,8 @@ const CTAButton: React.FC<CTAButtonProps> = ({
   //timerMinutes = 30,
   size = 'large',
   className = '',
-  onClick
+  onClick,
+  paymentLink
 }) => {
   const sizeClasses = {
     small: 'px-4 py-2 md:px-6 md:py-3 text-sm md:text-base',
@@ -25,8 +27,12 @@ const CTAButton: React.FC<CTAButtonProps> = ({
   };
 
   const handleClick = () => {
-    // Mock Mercado Pago integration
-    alert('Redirigiendo a Mercado Pago... (Integración simulada)');
+    if (paymentLink) {
+      window.open(paymentLink, '_blank');
+    } else {
+      // Mock Mercado Pago integration
+      alert('Redirigiendo a Mercado Pago... (Integración simulada)');
+    }
     if (onClick) onClick();
   };
 

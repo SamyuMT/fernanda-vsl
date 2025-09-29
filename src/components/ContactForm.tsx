@@ -29,16 +29,33 @@ const ContactForm: React.FC<ContactFormProps> = ({ isOpen, onClose }) => {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Simulate form submission
     try {
-      await new Promise(resolve => setTimeout(resolve, 1500));
-      setSubmitStatus('success');
-      setTimeout(() => {
-        onClose();
-        setFormData({ name: '', email: '', phone: '', clientType: '', message: '' });
-        setSubmitStatus('idle');
-      }, 2000);
+      const response = await fetch('https://n8n-n8n.zgfy7o.easypanel.host/webhook/contactos', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          clientType: formData.clientType,
+          message: formData.message
+        })
+      });
+
+      if (response.ok) {
+        setSubmitStatus('success');
+        setTimeout(() => {
+          onClose();
+          setFormData({ name: '', email: '', phone: '', clientType: '', message: '' });
+          setSubmitStatus('idle');
+        }, 3000);
+      } else {
+        throw new Error(`Error HTTP: ${response.status}`);
+      }
     } catch (error) {
+      console.error('Error al enviar el formulario:', error);
       setSubmitStatus('error');
     } finally {
       setIsSubmitting(false);
@@ -164,8 +181,16 @@ const ContactForm: React.FC<ContactFormProps> = ({ isOpen, onClose }) => {
           {/* Submit Button */}
           <div className="pt-4">
             {submitStatus === 'success' ? (
-              <div className="w-full bg-green-100 text-green-800 py-3 px-4 rounded-lg text-center font-medium">
-                ✓ Mensaje enviado correctamente
+              <div className="w-full bg-green-100 text-green-800 py-4 px-4 rounded-lg text-center">
+                <div className="flex items-center justify-center space-x-2 mb-2">
+                  <div className="w-6 h-6 bg-green-500 rounded-full flex items-center justify-center">
+                    <span className="text-white text-sm">✓</span>
+                  </div>
+                  <span className="font-medium">Mensaje enviado correctamente</span>
+                </div>
+                <p className="text-green-700 text-sm">
+                  Pronto estaremos en contacto contigo
+                </p>
               </div>
             ) : submitStatus === 'error' ? (
               <div className="w-full bg-red-100 text-red-800 py-3 px-4 rounded-lg text-center font-medium">

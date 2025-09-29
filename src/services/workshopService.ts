@@ -17,6 +17,7 @@ export interface Workshop {
   modality: string;
   price: number;
   originalPrice: number;
+  linkpay: string;
   image: string;
   features: string[];
   targetAudience: string[];

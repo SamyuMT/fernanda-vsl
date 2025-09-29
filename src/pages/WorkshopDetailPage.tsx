@@ -121,6 +121,7 @@ export default function WorkshopDetailPage() {
               timerMinutes={30}
               size="medium"
               className="mb-4"
+              paymentLink={workshop.linkpay || ''}
             />
             <button
               onClick={scrollToCourse}
@@ -272,6 +273,7 @@ export default function WorkshopDetailPage() {
               text={workshop.detailPage?.ctaButtonSecondaryText || "ADQUIRIR AHORA"}
               timerMinutes={25}
               size="large"
+              paymentLink={workshop.linkpay || ''}
             />
           </div>
           <p className="text-center text-sm md:text-base opacity-90 mb-4">
